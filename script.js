@@ -1,143 +1,366 @@
-// NAVBAR SCROLL
-window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".custom-navbar");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI/UX Designer</title>
 
-    if (window.scrollY > 350) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-});
+  <link rel="icon" type="image/png" href="Images/Favicon.png">
 
-// CONTACT BUTTON
-function contactAlert() {
-    alert("Thanks for reaching out!");
-}
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
 
-// ALL DOM-BASED CODE HERE
-document.addEventListener("DOMContentLoaded", function () {
+  
+</head>
 
-  // =========================
-  // TICKER
-  // =========================
-  const tickerInner = document.getElementById('tickerInner');
-  const tickerText = document.getElementById('tickerText');
+  <script src="script.js"></script>
+<body>
 
-  function runTicker(rawText) {
-    tickerInner.classList.remove('running');
-    tickerInner.style.removeProperty('--dur');
-    void tickerInner.offsetWidth;
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top custom-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <img src="images/logo.png" alt="beyond Logo" height="40">
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    tickerText.innerHTML = rawText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto nav-custom">
+        <li class="nav-item">
+          <a class="nav-link nav-item-link" href="#">Home</a>
+        </li>
 
-    requestAnimationFrame(() => {
-      const textW = tickerText.offsetWidth;
-      const totalTravel = window.innerWidth + textW;
-      const speed = 130;
-      const duration = Math.max(7, totalTravel / speed);
+        <li class="nav-item">
+          <a class="nav-link nav-item-link" href="#about">About</a>
+        </li>
 
-      tickerInner.style.setProperty('--dur', duration + 's');
-      tickerInner.classList.add('running');
-    });
-  }
+        <li class="nav-item">
+          <a class="nav-link nav-item-link" href="#work">Work</a>
+        </li>
 
-  runTicker("UI/UX Audit  .  UX Research  .  Wireframing  .  Prototyping  .  UI design  .  Responsive design  .  Usability Testing");
+        <li class="nav-item">
+          <a class="nav-link nav-item-link" href="#projects">Projects</a>
+        </li>
 
+        <li class="nav-item">
+          <a class="btn btn-light btn-sm ms-3 nav-btn" href="#contactus">Contact us</a>
+        </li>
 
-  // =========================
-  // ABOUT ANIMATION
-  // =========================
-  const elements = document.querySelectorAll("h2, .col-right p");
+      </ul>
+    </div>
+  </div>
+</nav>
 
-  elements.forEach((el, index) => {
-    setTimeout(() => {
-      el.classList.add("show");
-    }, index * 200);
-  });
+<!-- HERO -->
+<section class="hero d-flex align-items-center text-center">
+  <div class="container hero-content">
 
+    <h1 class="display-5 fw-regular">
+      The best UX is invisible — <br>until<br>it's missing
+    </h1>
 
-  // =========================
-  // ZOOM EFFECT
-  // =========================
-  const zoomItems = document.querySelectorAll('.zoom');
+    <!-- TICKER MOVED TO BOTTOM -->
+    <div class="ticker-track">
+      <div class="ticker-inner" id="tickerInner">
+        <span class="ticker-text" id="tickerText">
+          UI/UX Design • Graphic Design • Branding • Product Design • UI/UX Design • Graphic Design • Branding • Product Design •
+        </span>
+      </div>
+    </div>
 
-  zoomItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      item.style.zIndex = "2";
-    });
+  </div>
+</section>
 
-    item.addEventListener('mouseleave', () => {
-      item.style.zIndex = "1";
-    });
-  });
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="row">
 
+      <!-- LEFT: 8/12 -->
+      <div class="col-left">
+        <h2>
+          Hi, I'm <span>Hasintah</span> — UI/UX Designer <br>
+          & Creative Graphic Designer
+          <span class="regular-text">for brands, startups, and digital products.</span>
+        </h2>
+      </div>
 
-  // =========================
-  // TOGGLE IMAGE SWITCH
-  // =========================
-  const toggle = document.getElementById("designToggle");
-  const label = document.getElementById("toggleLabel");
-  const section = document.querySelector(".projects-section");
-  const images = document.querySelectorAll(".mosaic img");
-  const purpleCard = document.querySelector(".mosaic-card.purple");
+      <!-- RIGHT: 4/12 -->
+      <div class="col-right">
+        <p class="description">
+          With 17 years of experience in the design industry, I specialize in crafting user-focused digital experiences and leading creative design that drives impact.
+        </p>
+      </div>
 
-  function switchImages(type) {
-    images.forEach(img => {
-      img.classList.add("img-hide");
+    </div>
+  </div>
+</section>
 
-      setTimeout(() => {
-        img.src = img.dataset[type];
+<!-- ===== PROJECTS SECTION ===== -->
+<section class="projects-section">
 
-        img.classList.remove("img-hide");
-        img.classList.add("img-show");
+  <!-- BODY -->
+  <div class="projects-header">
+    <div class="projects-container">
 
-        setTimeout(() => {
-          img.classList.remove("img-show");
-        }, 300);
+      <div class="top-row">
+        <h2>Selected Projects</h2>
 
-      }, 200);
-    });
-  }
+        <!-- TOGGLE -->
+        <div class="toggle-wrapper">
+          <span id="toggleLabel">UI/UX Design</span>
 
-  toggle.addEventListener("change", () => {
+          <label class="switch">
+            <input type="checkbox" id="designToggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-    if (toggle.checked) {
-      label.textContent = "Graphic Design";
-      section.classList.add("dark");
-      switchImages("graphic");
+      <!-- TAGS -->
+      <div class="tags">
+        <span>UX research</span>
+        <span>End-to-end product design</span>
+        <span>Complex workflows</span>
+        <span>Cross-platform</span>
+        <span>UI design</span>
+        <span>Prototyping</span>
+        <span>User flows</span>
+      </div>
 
-      // 👉 ADD THIS
-      purpleCard.classList.add("graphic");
+    </div>
+  </div>
 
-    } else {
-      label.textContent = "UI/UX Design";
-      section.classList.remove("dark");
-      switchImages("uiux");
-      purpleCard.classList.remove("graphic");
-    }
+  <!-- MOSAIC -->
+  <div class="mosaic">
+    <div class="mosaic-container">
 
+      <div class="mosaic-grid">
 
-    // =========================
-// FAQ TOGGLE (CLICK AGAIN TO CLOSE)
-// =========================
-const faqButtons = document.querySelectorAll('.accordion-button');
+        <!-- LEFT -->
+        <div class="mosaic-left zoom">
+          <img src="images/case study 1.png"
+               data-uiux="images/case study 1.png"
+               data-graphic="images/case study graphic 1.png">
+        </div>
 
-faqButtons.forEach(button => {
-  button.addEventListener('click', function () {
-    const isOpen = this.classList.contains('collapsed');
+        <!-- RIGHT -->
+        <div class="mosaic-right">
 
-    // Close all first
-    faqButtons.forEach(btn => btn.classList.add('collapsed'));
-    
-    // If it was already open → close it
-    if (!isOpen) {
-      this.classList.add('collapsed');
-    }
-  });
-});
+          <!-- PURPLE CARD -->
+          <div class="mosaic-card purple">
+            <h3>More Projects and Case studies</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button>View all projects</button>
+          </div>
 
+          <div class="zoom">
+            <img src="images/case study 2.png"
+                 data-uiux="images/case study 2.png"
+                 data-graphic="images/case study graphic 2.png">
+          </div>
 
-  });
+          <div class="zoom">
+            <img src="images/case study 3.png"
+                 data-uiux="images/case study 3.png"
+                 data-graphic="images/case study graphic 3.png">
+          </div>
 
-});
+          <div class="zoom">
+            <img src="images/case study 4.png"
+                 data-uiux="images/case study 4.png"
+                 data-graphic="images/case study graphic 4.png">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-container">
+
+    <div class="faq-grid">
+
+      <!-- LEFT SIDE -->
+      <div class="faq-left">
+        <h2>
+          Everything you <br>
+          <span class="regular-text">need to know</span>
+        </h2>
+        <p class="faq-subtext">
+           Do you have any<br>
+          other questions?
+        </p>
+      </div>
+
+      <!-- RIGHT SIDE ACCORDION -->
+      <div class="faq-right">
+
+        <div class="accordion" id="accordionExample">
+
+          <!-- ITEM 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne">
+                What services do you offer?
+              </button>
+            </h2>
+
+            <div id="collapseOne" class="accordion-collapse collapse show"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                I specialize in UI/UX design, wireframing, high-fidelity prototyping, and responsive web design.
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo">
+                What tools do you use?
+              </button>
+            </h2>
+
+            <div id="collapseTwo" class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                I primarily use Figma for designing interfaces, creating wireframes, and building interactive prototypes.
+                For visual design and creative editing, I also work with Adobe Photoshop and Illustrator.
+                To ensure smooth development handoff, I use Figma Dev Mode to prepare assets and specifications for developers.
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree">
+                What is your design process like?
+              </button>
+            </h2>
+
+            <div id="collapseThree" class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                My design process starts with research to understand user needs, business goals, and the problem I’m solving.
+                I then move into wireframing and structuring user flows to define the layout and experience.
+                Finally, I design high-fidelity UI, build prototypes, test usability, and refine the design before developer handoff.
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour">
+                Who do you typically work with?
+              </button>
+            </h2>
+
+            <div id="collapseFour" class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                I typically work with product managers, developers, and stakeholders to align design with business and user needs.
+                I collaborate closely with developers to ensure designs are implemented accurately and function smoothly.
+                I also work with clients and marketing teams to refine ideas and maintain consistency across the product experience.
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFive"
+                aria-expanded="false"
+                aria-controls="collapseFive">
+                How long does a typical project take?
+              </button>
+            </h2>
+
+            <div id="collapseFive" class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                A typical UI/UX project can take anywhere from 1 to 2 weeks for small tasks like landing pages or simple features.
+                Medium projects such as full websites or app sections usually take around 3 to 6 weeks depending on complexity.
+                Larger, more complex projects involving research, multiple flows, and testing can take 6 to 12 weeks or more.
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- accordion -->
+
+      </div> <!-- faq-right -->
+
+    </div> <!-- faq-grid -->
+
+  </div> <!-- faq-container -->
+</section> 
+
+  <!-- CONTACT SECTION (FULL WIDTH) -->
+<section class="contact-section">
+
+  <!-- Big Heading -->
+  <div class="contact-title">
+    <h2>Let's<br>connect</h2>
+  </div>
+  
+
+  <!-- Right Side Links -->
+  <div class="contact-right">
+    <a href="www.linkedin.com/in/hasintah">
+      LinkedIn
+    </a>
+
+    <a href="hasintah.coormiah@gmail.com">
+      hasintah.coormiah@gmail.com
+    </a>
+  </div>
+
+ <!-- Bottom Left Text (no links) -->
+  <div class="contact-bottom-left">
+    <span>Cookies</span>
+    <span>Privacy</span>
+    <span>Legal</span>
+  </div>
+
+</section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- YOUR JS FILE -->
+  <script src="script.js"></script>
+
+  </body>
+</html>
