@@ -69,7 +69,7 @@ body {
 /* HERO SECTION */
 .hero {
   height: 850px;
-  background: url('images/herobanner.png') center/cover no-repeat;
+  background: url('/images/herobanner.png') center/cover no-repeat;
   position: relative;
   color: white;
 }
